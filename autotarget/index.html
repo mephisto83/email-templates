@@ -348,8 +348,9 @@
 					</td>
 				</tr><!-- end tr -->
 				<tr>
-					<td valign="middle" class="hero bg_white"
+					<td valign="middle" id="image" class="hero bg_white"
 						style="background-image: url(images/temp2.png); background-size: cover; height: 600px;">
+						<img id="output" />
 						<div class="overlay"></div>
 						<div style="position:absolute; left: -260px; top: 0px;"><img src="images/qr_target.png"
 								style="height:260px; width: 260px;" /></div>
@@ -369,7 +370,9 @@
 							<tr>
 								<td style="padding: 0 2.5em; text-align: left;">
 									<div class="text">
-										<h2 style="color: white;background-color: aliceblue#00000077;font-weight: 400;">Hustle And Network In Order To Succeed</h2>
+										<h2 style="color: white;background-color: aliceblue#00000077;font-weight: 400;"
+											id="slogan">
+											Have a vision.</h2>
 									</div>
 								</td>
 							</tr>
@@ -378,9 +381,40 @@
 				</tr><!-- end tr -->
 
 			</table>
-
+			<div style="border: solid 1px #ccc; padding: 4px; margin: 4px;">
+				<label>
+					Image:
+					<input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
+						>
+					<input style="padding:10px;margin:4px;border:none;width:245px" id="image_input" />
+				</label>
+			</div>
+			<div style="border: solid 1px #ccc; padding: 4px; margin: 4px;">
+				<label>
+					Slogan:
+					<input style="padding:10px;margin:4px;border:none;width:245px" id="slogan_input" />
+				</label>
+			</div>
 		</div>
 	</center>
 </body>
+<script>
+	let slogan = new URLSearchParams(window.location.search).get('slogan')
+	let image = new URLSearchParams(window.location.search).get('image') || 'aporter_FLCL_character_wearing_Guadeloupe_streetwear_and_a_vint_ca13f940-2695-4b15-a040-1a6ad2266506_x1_y0.png'
+	if (image) {
+		document.querySelector('#image').style.backgroundImage = `url(images/${image})`;
+	}
+	if (slogan) {
+		document.querySelector('#slogan').innerHTML = slogan;
+	}
+	var loadFile = function (event) {
+		var image = document.getElementById('output');
+		image.src = URL.createObjectURL(event.target.files[0]);
+	};
+	let slogan_input = document.querySelector('#slogan_input');
+	slogan_input.addEventListener('change', (evt) => {
+		document.querySelector('#slogan').innerHTML = evt.currentTarget.value;
+	})
+</script>
 
 </html>
