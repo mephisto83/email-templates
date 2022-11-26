@@ -350,7 +350,7 @@
 				<tr>
 					<td valign="middle" id="image" class="hero bg_white"
 						style="background-image: url(images/temp2.png); background-size: cover; height: 600px;">
-						<img id="output" />
+						<img style="height: 600px;width: 600px;" id="output" />
 						<div class="overlay"></div>
 						<div style="position:absolute; left: -260px; top: 0px;"><img src="images/qr_target.png"
 								style="height:260px; width: 260px;" /></div>
@@ -384,8 +384,7 @@
 			<div style="border: solid 1px #ccc; padding: 4px; margin: 4px;">
 				<label>
 					Image:
-					<input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
-						>
+					<input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)">
 					<input style="padding:10px;margin:4px;border:none;width:245px" id="image_input" />
 				</label>
 			</div>
